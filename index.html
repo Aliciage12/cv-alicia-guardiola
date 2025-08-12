@@ -5,6 +5,7 @@
   <meta name="description" content="Alicia Guardiola - Especialista en Marketing Digital & Comunicación Creativa">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <title>Alicia Guardiola - Marketing Digital & Comunicación</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
     /* Reset y variables */
     :root {
@@ -136,6 +137,15 @@
     
     .nav-links a.active {
       color: var(--primary-color);
+    }
+
+    /* Estilos para los iconos del menú */
+    .nav-links .material-icons {
+      font-size: 1.2rem;
+      vertical-align: middle;
+      margin-right: 0.3rem;
+      position: relative;
+      top: -1px;
     }
 
     /* Contenido principal */
@@ -341,6 +351,10 @@
         display: none;
       }
       
+      .nav-links .material-icons {
+        display: none; /* Ocultamos los iconos en móvil */
+      }
+      
       .presentacion {
         flex-direction: column-reverse;
         padding: 1.5rem;
@@ -391,10 +405,10 @@
       <div class="logo">AGE</div>
       <button class="menu-toggle" aria-label="Menú">☰</button>
       <ul class="nav-links">
-        <li><a href="#" class="nav-link active" data-section="inicio">Inicio</a></li>
-        <li><a href="#" class="nav-link" data-section="formacion">Formación</a></li>
-        <li><a href="#" class="nav-link" data-section="experiencia">Experiencia</a></li>
-        <li><a href="#" class="nav-link" data-section="contacto">Contacto</a></li>
+        <li><a href="#" class="nav-link active" data-section="inicio"><i class="material-icons">home</i> Inicio</a></li>
+        <li><a href="#" class="nav-link" data-section="formacion"><i class="material-icons">school</i> Formación</a></li>
+        <li><a href="#" class="nav-link" data-section="experiencia"><i class="material-icons">work</i> Experiencia</a></li>
+        <li><a href="#" class="nav-link" data-section="contacto"><i class="material-icons">email</i> Contacto</a></li>
       </ul>
     </nav>
   </div>
