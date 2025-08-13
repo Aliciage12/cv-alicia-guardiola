@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -10,8 +10,10 @@
     /* Reset y variables */
     :root {
       --primary-color: #4ca7ff;
+      --primary-light: #e6f2ff;
       --secondary-color: #f5faff;
       --text-color: #333;
+      --text-light: #666;
       --white: #ffffff;
       --shadow: 0 4px 10px rgba(0,0,0,0.05);
       --transition: all 0.3s ease;
@@ -23,7 +25,7 @@
       padding: 0;
     }
     
-    /* Tipografía responsive */
+    /* Tipografía */
     html {
       font-size: 16px;
       scroll-behavior: smooth;
@@ -43,30 +45,45 @@
       overflow-x: hidden;
     }
     
-    /* Header adaptable */
+    /* Header */
     header {
       background-color: var(--primary-color);
       color: var(--white);
       padding: 2rem 1rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
     }
     
     header h1 {
       font-size: clamp(1.8rem, 4vw, 2.2rem);
       margin-bottom: 0.5rem;
+      position: relative;
     }
     
     header h2 {
       font-size: clamp(1rem, 2.5vw, 1.2rem);
       font-weight: normal;
       margin-bottom: 0.5rem;
+      position: relative;
     }
     
     header p {
       font-size: 0.9rem;
+      position: relative;
     }
 
-    /* Menú de navegación responsive */
+    /* Menú de navegación */
     .nav-container {
       background: var(--white);
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -88,6 +105,7 @@
       font-weight: bold;
       color: var(--primary-color);
       padding: 1rem 0;
+      font-size: 1.2rem;
     }
     
     .menu-toggle {
@@ -128,6 +146,7 @@
       height: 2px;
       background-color: var(--primary-color);
       transition: var(--transition);
+      border-radius: 1px;
     }
     
     .nav-links a:hover::after,
@@ -139,7 +158,7 @@
       color: var(--primary-color);
     }
 
-    /* Estilos para los iconos del menú */
+    /* Iconos del menú */
     .nav-links .material-icons {
       font-size: 1.2rem;
       vertical-align: middle;
@@ -182,6 +201,7 @@
     
     .texto-bienvenida p {
       margin-bottom: 1rem;
+      color: var(--text-color);
     }
     
     .profile-img-container {
@@ -205,7 +225,21 @@
       transform: scale(1.05);
     }
 
-    /* Secciones y cards */
+    /* Secciones */
+    .section-content {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .section-content.active {
+      display: block;
+    }
+
     section {
       margin: 2rem 0;
       padding: 1rem;
@@ -218,13 +252,14 @@
       border-bottom: 2px solid var(--primary-color);
       display: inline-block;
     }
-    
+
+    /* Cards */
     .card {
       background: var(--white);
       border-left: 5px solid var(--primary-color);
       margin: 1.5rem 0;
       padding: 1.5rem;
-      border-radius: 8px;
+      border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       transition: var(--transition);
     }
@@ -238,15 +273,35 @@
       display: block;
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
+      color: var(--primary-color);
     }
     
     .card em {
       display: block;
       margin: 0.5rem 0;
       font-style: normal;
-      color: #666;
+      color: var(--text-light);
     }
     
+    .card ul {
+      padding-left: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .card li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    
+    .card li::before {
+      content: "•";
+      color: var(--primary-color);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
     .project-img {
       width: 100%;
       height: auto;
@@ -256,27 +311,92 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    /* Contacto */
+    /* Botón de proyecto */
+    .project-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    
+    .project-button:hover {
+      background-color: #3a8de0;
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    
+    .project-button .material-icons {
+      font-size: 1rem;
+      vertical-align: middle;
+      margin-left: 0.3rem;
+    }
+
+    /* Sección Contacto */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
     .contact-card {
       background: var(--white);
       border-left: 5px solid var(--primary-color);
       padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
     }
     
-    .contact-card p {
-      margin: 0.5rem 0;
+    .contact-card:hover {
+      transform: translateY(-3px);
     }
     
-    .contact-card a {
+    .contact-icon {
+      background-color: var(--primary-light);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    
+    .contact-icon .material-icons {
       color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+    
+    .contact-info {
+      flex: 1;
+    }
+    
+    .contact-info strong {
+      display: block;
+      color: var(--primary-color);
+      margin-bottom: 0.25rem;
+    }
+    
+    .contact-info a, .contact-info span {
+      color: var(--text-color);
       text-decoration: none;
       transition: var(--transition);
     }
     
-    .contact-card a:hover {
+    .contact-info a:hover {
+      color: var(--primary-color);
       text-decoration: underline;
     }
 
@@ -299,21 +419,6 @@
     .fade-in.show {
       opacity: 1;
       transform: translateY(0);
-    }
-
-    /* Ocultar secciones no activas */
-    .section-content {
-      display: none;
-      animation: fadeIn 0.5s ease forwards;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    .section-content.active {
-      display: block;
     }
 
     /* Media Queries para móviles */
@@ -351,10 +456,6 @@
         display: none;
       }
       
-      .nav-links .material-icons {
-        display: none; /* Ocultamos los iconos en móvil */
-      }
-      
       .presentacion {
         flex-direction: column-reverse;
         padding: 1.5rem;
@@ -370,6 +471,10 @@
       
       .card, .contact-card {
         padding: 1.2rem;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -505,6 +610,7 @@
     <!-- Sección Experiencia -->
     <section id="experiencia" class="section-content">
       <h2>Experiencia laboral</h2>
+      
       <div class="card fade-in">
         <strong>Web Content Manager – San Aburico SL (2025)</strong>
         <p>Actualmente soy responsable de la gestión y actualización del catálogo digital en San Aburico, asegurando información clara y visualmente atractiva.</p>
@@ -522,6 +628,7 @@
         <p>📊 Analizo métricas clave (alcance, engagement, comunidad) y ajusto la estrategia de contenidos en función de los resultados.</p>
         <p>🔎 He fortalecido habilidades en storytelling visual, gestión de redes y análisis de datos, aportando activamente al posicionamiento digital de la marca.</p>
       </div>
+      
       <div class="card fade-in">
         <strong>Asistente de Marketing – Marketing Digital Murcia (MDM)</strong>
         <p>Contribuí al crecimiento digital de la empresa a través de una combinación efectiva de contenido, estrategia y tecnología:</p>
@@ -532,40 +639,87 @@
         <p>🌐 Maquetación en WordPress usando Elementor, cuidando la experiencia del usuario y la presentación visual de cada artículo.</p>
       </div>
 
-      <h2>Proyectos realizados</h2>
+      <h2 style="margin-top: 3rem;">Proyectos realizados</h2>
+      
       <div class="card fade-in">
         <strong>OJO POR OJO Óptica – E‑commerce</strong>
         <p>En este proyecto diseñé y desarrollé la página web oficial de OJO POR OJO, una óptica local con presencia física en un municipio de la Región de Murcia. El objetivo fue crear una tienda online funcional, atractiva y adaptada a las necesidades de un pequeño comercio, integrando elementos de marca, estructura intuitiva y enfoque comercial.</p>  
-        <p>Además de la parte técnica y visual, trabajé en la experiencia del usuario (UX), arquitectura de la información, selección de CMS, configuración del hosting y diseño responsive. El resultado fue un sitio web accesible, profesional y alineado con los valores de la marca. Sitio: <a href="https://ojoporojooptica.com" target="_blank">ojoporojooptica.com</a></p> 
+        <p>Además de la parte técnica y visual, trabajé en la experiencia del usuario (UX), arquitectura de la información, selección de CMS, configuración del hosting y diseño responsive. El resultado fue un sitio web accesible, profesional y alineado con los valores de la marca.</p>
         <img src="Captura de pantalla 2025-07-27 a las 23.15.08.png" alt="OjoPorOjo Óptica - Página web" class="project-img">
+        <a href="https://ojoporojooptica.com" target="_blank" class="project-button">
+          Click para ver el sitio <i class="material-icons">open_in_new</i>
+        </a>
       </div>
+      
       <div class="card fade-in">
         <strong>GUCONST – Sitio Corporativo</strong>
         <p>Actualmente me encuentro desarrollando el sitio web corporativo de GUCONST, una empresa dedicada a ofrecer servicios de construcción, reformas y mantenimiento. Este proyecto busca dotar al negocio de una presencia digital profesional, alineada con los valores de confianza, solidez y calidad que representa el sector.</p>
         <p>Mi labor abarca desde la conceptualización de la arquitectura del sitio hasta el diseño visual y la redacción de contenidos orientados a conversión. Estoy trabajando en una estructura clara y jerarquizada que permita al usuario acceder fácilmente a los servicios ofrecidos, solicitar presupuestos y conocer la trayectoria de la empresa.</p>
         <p>En el aspecto técnico, el sitio está siendo desarrollado con WordPress, utilizando plantillas personalizadas y prácticas de diseño responsive para garantizar una experiencia óptima desde cualquier dispositivo. También estoy aplicando estrategias básicas de SEO on-page, como la optimización de títulos, meta descripciones, interlinking y velocidad de carga, con el objetivo de facilitar el posicionamiento orgánico en buscadores locales.</p>
-        <p>Este proyecto me está permitiendo aplicar conocimientos de diseño visual, experiencia de usuario y estrategia digital, al tiempo que gestiono todas las fases del desarrollo de una web corporativa real. Sitio: <a href="https://guconst.es" target="_blank">guconst.es</a></p>
         <img src="Captura de pantalla 2025-07-27 a las 23.13.45.png" alt="GUCONST - Sitio web corporativo" class="project-img">
+        <a href="https://guconst.es" target="_blank" class="project-button">
+          Click para ver el sitio <i class="material-icons">open_in_new</i>
+        </a>
       </div>
+      
       <div class="card fade-in">
         <strong>Sellatupdf – Blog</strong>
         <p>Sella tu PDF fue un proyecto integral de creación de un blog especializado en soluciones digitales para la firma y protección de documentos PDF. Me encargué del diseño y desarrollo completo del sitio web, así como de la estrategia de contenidos y posicionamiento orgánico en buscadores.</p>
         <p>El proyecto incluyó el análisis y selección de palabras clave, la redacción de entradas optimizadas para SEO, la aplicación de técnicas de SEO on-page (estructura, metadatos, interlinking, usabilidad, velocidad de carga) y el desarrollo de acciones de linkbuilding para mejorar la autoridad del dominio.</p>
-        <p>El objetivo principal fue atraer tráfico cualificado y ofrecer al usuario una experiencia clara, profesional y centrada en la utilidad del contenido. Este proyecto me permitió combinar competencias técnicas, estratégicas y creativas, orientadas a resultados medibles en posicionamiento web. Sitio: <a href="https://www.sellatupdf.com" target="_blank">sellatupdf.com</a></p>
+        <p>El objetivo principal fue atraer tráfico cualificado y ofrecer al usuario una experiencia clara, profesional y centrada en la utilidad del contenido. Este proyecto me permitió combinar competencias técnicas, estratégicas y creativas, orientadas a resultados medibles en posicionamiento web.</p>
         <img src="Captura de pantalla 2025-07-27 a las 23.15.58.png" alt="Sellatupdf - Blog especializado" class="project-img">
+        <a href="https://www.sellatupdf.com" target="_blank" class="project-button">
+          Click para ver el sitio <i class="material-icons">open_in_new</i>
+        </a>
       </div>
     </section>
 
     <!-- Sección Contacto -->
     <section id="contacto" class="section-content">
       <h2>Contacto</h2>
-      <div class="contact-card fade-in">
-        <p><strong>Email:</strong> <a href="mailto:aliciiage@gmail.com">aliciiage@gmail.com</a></p>
-        <p><strong>Teléfono:</strong> <a href="tel:+34630200095">+34 630 20 00 95</a></p>
-        <p><strong>Ubicación:</strong> Murcia, España</p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alicia-guardiola-/" target="_blank">linkedin.com/in/alicia-guardiola</a></p>
+      <p style="margin-bottom: 1.5rem;">Estoy disponible para nuevos proyectos: desde estrategia digital hasta creación de contenido creativo y websites con personalidad.</p>
+      
+      <div class="contact-grid">
+        <div class="contact-card fade-in">
+          <div class="contact-icon">
+            <i class="material-icons">email</i>
+          </div>
+          <div class="contact-info">
+            <strong>Email</strong>
+            <a href="mailto:aliciiage@gmail.com">aliciiage@gmail.com</a>
+          </div>
+        </div>
+        
+        <div class="contact-card fade-in">
+          <div class="contact-icon">
+            <i class="material-icons">phone</i>
+          </div>
+          <div class="contact-info">
+            <strong>Teléfono</strong>
+            <a href="tel:+34630200095">+34 630 20 00 95</a>
+          </div>
+        </div>
+        
+        <div class="contact-card fade-in">
+          <div class="contact-icon">
+            <i class="material-icons">location_on</i>
+          </div>
+          <div class="contact-info">
+            <strong>Ubicación</strong>
+            <span>Murcia, España</span>
+          </div>
+        </div>
+        
+        <div class="contact-card fade-in">
+          <div class="contact-icon">
+            <i class="material-icons">link</i>
+          </div>
+          <div class="contact-info">
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/in/alicia-guardiola-/" target="_blank">linkedin.com/in/alicia-guardiola</a>
+          </div>
+        </div>
       </div>
-      <p class="fade-in">Estoy disponible para nuevos proyectos: desde estrategia digital hasta creación de contenido creativo y websites con personalidad.</p>
     </section>
   </main>
 
@@ -630,15 +784,6 @@
       }, { threshold: 0.1 });
       
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-      
-      // Ajustar altura del viewport en móviles
-      function setVh() {
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-      }
-      
-      window.addEventListener('resize', setVh);
-      setVh();
     });
   </script>
 </body>
