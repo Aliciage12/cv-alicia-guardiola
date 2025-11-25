@@ -1,467 +1,789 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="description" content="Alicia Guardiola - Especialista en Marketing Digital & Comunicación Creativa">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Alicia Guardiola - Marketing Digital & Comunicación</title>
-<script src="https://unpkg.com/feather-icons"></script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--p:#4ca7ff;--pl:#e6f2ff;--bg:#f5faff;--w:#ffffff;--text:#333;--t:.35s ease;--shadow-soft:0 10px 30px rgba(15,23,42,.08);--shadow-card:0 8px 24px rgba(15,23,42,.06);--radius-card:22px}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-#loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#ffffff;z-index:9999;animation:fadeOut 1.1s ease forwards 1.3s}
-#loader-logo{font-size:3rem;font-weight:700;letter-spacing:.1em;color:var(--p);opacity:0;border-radius:999px;padding:.9rem 1.8rem;border:1px solid rgba(76,167,255,.25);box-shadow:0 18px 40px rgba(76,167,255,.35);background:radial-gradient(circle at 0 0,#fff 0,#f3f8ff 40%,#e3f0ff 80%);animation:logoIn 1.2s cubic-bezier(.16,1,.3,1) forwards}
-@keyframes logoIn{0%{opacity:0;transform:scale(.7) translateY(10px)}60%{opacity:1;transform:scale(1.07) translateY(0)}100%{opacity:1;transform:scale(1)}}
-@keyframes fadeOut{100%{opacity:0;visibility:hidden}}
-header{background:linear-gradient(135deg,#4ca7ff,#2b7ddf);color:#fff;text-align:center;padding:3rem 1rem 2.6rem;position:relative;overflow:hidden;box-shadow:0 20px 40px rgba(37,99,235,.25)}
-header::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.18) 0,transparent 55%),radial-gradient(circle at 85% 80%,rgba(96,165,250,.4) 0,transparent 60%);opacity:.9;pointer-events:none}
-header>*{position:relative;z-index:1}
-header h1{font-size:clamp(1.9rem,4vw,2.6rem);letter-spacing:.04em;margin-bottom:.4rem}
-header h2{font-size:clamp(1.05rem,2.5vw,1.3rem);font-weight:400;opacity:.96;margin-bottom:.4rem}
-header p{opacity:.92;font-size:.95rem}
-.nav-container{background:rgba(248,250,252,0.85);backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(15,23,42,.12);position:sticky;top:0;z-index:1000}
-nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:.6rem 1.2rem}
-.logo{font-weight:700;color:var(--p);font-size:1.3rem;letter-spacing:.15em}
-.menu-toggle{display:none;border:none;background:none;font-size:1.9rem;color:var(--p);cursor:pointer}
-.nav-links{display:flex;list-style:none;gap:1.4rem}
-.nav-links a{text-decoration:none;color:#1e3a8a;font-weight:600;font-size:.93rem;display:flex;align-items:center;gap:.35rem;padding:.55rem .1rem;position:relative;transition:var(--t);cursor:pointer}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:.1rem;width:0;height:2px;border-radius:999px;background:#1d4ed8;transition:var(--t)}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%}
-.nav-links i{width:18px;height:18px}
-@media(max-width:768px){.menu-toggle{display:block}.nav-links{position:absolute;left:0;right:0;top:100%;background:#ffffff;flex-direction:column;align-items:flex-start;padding:1rem 1.2rem;display:none;box-shadow:0 18px 40px rgba(15,23,42,.18)}.nav-links.show{display:flex}}
-main{max-width:1200px;margin:0 auto;padding:1.8rem 1.2rem 3rem}
-.fade-in{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
-.show{opacity:1;transform:translateY(0)}
-.section-content{display:none;animation:fade .45s ease-out forwards}
-.section-content.active{display:block}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-.presentacion{background:var(--w);border-radius:var(--radius-card);padding:2.2rem 2rem;margin:2rem 0;display:flex;flex-wrap:wrap;gap:2.2rem;align-items:center;box-shadow:var(--shadow-card)}
-.texto-bienvenida{flex:1;min-width:280px}
-.texto-bienvenida h3{font-size:1.9rem;color:#1e3a8a;margin-bottom:1rem}
-.texto-bienvenida p{margin-bottom:.9rem;font-size:.97rem;color:#374151}
-.btn-hero-group{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.8rem}
-.profile-img{width:240px;height:240px;object-fit:cover;border-radius:40%;border:4px solid #dbeafe;box-shadow:var(--shadow-soft);margin:auto;background:#eff6ff}
-.card{background:var(--w);border-radius:var(--radius-card);padding:1.6rem 1.6rem 1.5rem;margin:1.4rem 0;box-shadow:var(--shadow-card);transition:var(--t);border:1px solid rgba(148,163,184,.18)}
-.card:hover{transform:translateY(-4px);box-shadow:0 14px 38px rgba(15,23,42,.16)}
-.card strong{display:block;margin-bottom:.2rem}
-.card em{display:block;margin-bottom:.4rem;font-size:.9rem;color:#6b7280}
-.btn-animated{position:relative;overflow:hidden;padding:.8rem 1.4rem;background:#111827;color:#f9fafb!important;border-radius:999px;text-decoration:none;font-weight:600;font-size:.9rem;transition:.35s ease;display:inline-flex;align-items:center;gap:.4rem;cursor:pointer}
-.btn-animated::before{content:"";position:absolute;top:0;left:-120%;width:120%;height:100%;background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.7)50%,transparent 100%);transform:skewX(-20deg);transition:.55s}
-.btn-animated:hover::before{left:120%}
-.btn-animated:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(15,23,42,.35)}
-.btn-ghost{border-radius:999px;padding:.75rem 1.3rem;border:1px solid rgba(148,163,184,.6);text-decoration:none;font-size:.9rem;font-weight:600;color:#111827;background:#f9fafb;display:inline-flex;align-items:center;gap:.4rem;transition:var(--t);cursor:pointer}
-.btn-ghost:hover{background:#e5edff;border-color:#93c5fd;transform:translateY(-1px)}
-.formacion-icon{width:32px;height:32px;stroke:var(--p);stroke-width:1.3;margin-bottom:.1rem}
-.category-block{background:var(--w);border-radius:var(--radius-card);padding:2rem 1.8rem;margin:2rem 0;box-shadow:var(--shadow-card);transition:var(--t);border:1px solid rgba(148,163,184,.18)}
-.category-block:hover{box-shadow:0 18px 40px rgba(15,23,42,.14);transform:translateY(-3px)}
-.category-title{font-size:1.35rem;font-weight:700;color:#1d4ed8;margin-bottom:1.1rem;display:flex;align-items:center;gap:.7rem}
-.course-item{background:#f5f7ff;border-radius:16px;padding:1.05rem 1.1rem;margin-top:.85rem;border-left:4px solid #93c5fd;transition:var(--t);font-size:.94rem}
-.course-item strong{display:block;margin-bottom:.2rem}
-.course-item:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(148,163,184,.4);background:#eef2ff}
-#experiencia h2{margin-top:.4rem}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;margin-top:1.5rem}
-.mockup-shell{background:#020617;border-radius:24px;padding:14px 14px 18px;margin-top:1rem;box-shadow:0 22px 45px rgba(15,23,42,.55);position:relative;overflow:hidden}
-.mockup-shell::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 0 0,rgba(148,163,184,.5),transparent 60%);opacity:.35;pointer-events:none}
-.mockup-screen{border-radius:15px;overflow:hidden;background:#020617;border:1px solid rgba(148,163,184,.6)}
-.mockup-screen img{display:block;width:100%;height:auto}
-.mockup-bottom{margin:0 auto;margin-top:9px;width:72%;height:8px;border-radius:999px;background:linear-gradient(to right,#020617,#1f2937,#020617)}
-.contact-grid{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.contact-card{padding:1.4rem 1.5rem;background:var(--w);display:flex;align-items:center;gap:1rem;border-radius:var(--radius-card);box-shadow:var(--shadow-card);border:1px solid rgba(148,163,184,.22);transition:var(--t)}
-.contact-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(15,23,42,.18)}
-.contact-icon-circle{width:42px;height:42px;border-radius:999px;background:#e5edff;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#1d4ed8}
-.contact-card a{color:#1d4ed8;text-decoration:none;font-weight:500}
-footer{background:#0f172a;color:#e5e7eb;text-align:center;padding:2rem 1rem;font-size:.9rem;letter-spacing:.03em}
-.floating-menu{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(15,23,42,.92);color:#e5e7eb;backdrop-filter:blur(18px);box-shadow:0 18px 40px rgba(15,23,42,.6);padding:.55rem 1.1rem;border-radius:999px;display:flex;gap:1.4rem;z-index:999;animation:fadeUp .6s ease}
-.floating-menu a{display:flex;flex-direction:column;align-items:center;text-align:center;font-size:.7rem;text-decoration:none;color:#cbd5f5;opacity:.9;transition:.25s ease;cursor:pointer}
-.floating-menu span{margin-top:.1rem}
-.floating-menu a.active,.floating-menu a:hover{color:#ffffff;opacity:1}
-@keyframes fadeUp{from{opacity:0;transform:translate(-50%,18px)}to{opacity:1;transform:translate(-50%,0)}}
-@media(min-width:900px){.floating-menu{display:none}}
-@media(max-width:720px){.presentacion{padding:1.6rem 1.3rem}.category-block{padding:1.7rem 1.4rem}.projects-grid{grid-template-columns:1fr}}
-/* todos los feather icons en color principal */
-svg.feather{stroke:var(--p)!important}
-</style>
+  <meta charset="UTF-8">
+  <meta name="description" content="Alicia Guardiola - Especialista en Marketing Digital & Comunicación Creativa">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Alicia Guardiola - Marketing Digital & Comunicación</title>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --p:#4ca7ff;
+      --p-dark:#1d8be8;
+      --bg:#ffffff;
+      --w:#ffffff;
+      --text:#1a1a1a;
+      --t:.35s ease;
+      --shadow-soft:0 10px 30px rgba(0,0,0,.08);
+      --shadow-card:0 8px 24px rgba(0,0,0,.06);
+      --radius-card:22px;
+    }
+    body{
+      font-family:'Segoe UI',system-ui,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* LOADER */
+    #loader{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#ffffff;
+      z-index:9999;
+      animation:fadeOut 1.1s ease forwards 1.3s;
+    }
+    #loader-logo{
+      font-size:3rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      color:var(--p);
+      opacity:0;
+      border-radius:999px;
+      padding:.9rem 1.8rem;
+      border:1px solid rgba(76,167,255,.25);
+      box-shadow:0 18px 40px rgba(76,167,255,.35);
+      background:radial-gradient(circle at 0 0,#fff 0,#f3f8ff 40%,#e3f0ff 80%);
+      animation:logoIn 1.2s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    @keyframes logoIn{
+      0%{opacity:0;transform:scale(.7) translateY(10px)}
+      60%{opacity:1;transform:scale(1.07) translateY(0)}
+      100%{opacity:1;transform:scale(1)}
+    }
+    @keyframes fadeOut{100%{opacity:0;visibility:hidden}}
+
+    /* HEADER */
+    header{
+      background:linear-gradient(135deg,var(--p),var(--p-dark));
+      color:#fff;
+      text-align:center;
+      padding:3rem 1rem 2.6rem;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 20px 40px rgba(0,0,0,.18);
+    }
+    header::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 15% 20%,rgba(255,255,255,.22) 0,transparent 55%),
+        radial-gradient(circle at 85% 80%,rgba(255,255,255,.18) 0,transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    header>*{position:relative;z-index:1}
+    header h1{font-size:clamp(1.9rem,4vw,2.6rem);letter-spacing:.04em;margin-bottom:.4rem}
+    header h2{font-size:clamp(1.05rem,2.5vw,1.3rem);font-weight:400;opacity:.96;margin-bottom:.4rem}
+    header p{opacity:.92;font-size:.95rem}
+
+    /* MAIN */
+    main{
+      max-width:1200px;
+      margin:0 auto;
+      padding:1.8rem 1.2rem 4.5rem;
+    }
+
+    /* ANIMACIONES */
+    .fade-in{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1);
+    }
+    .show{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .section-content{
+      display:none;
+      animation:fade .45s ease-out forwards;
+    }
+    .section-content.active{display:block}
+    @keyframes fade{from{opacity:0}to{opacity:1}}
+
+    /* PRESENTACIÓN */
+    .presentacion{
+      background:var(--w);
+      border-radius:var(--radius-card);
+      padding:2.2rem 2rem;
+      margin:2rem 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:2.2rem;
+      align-items:center;
+      box-shadow:var(--shadow-card);
+    }
+    .texto-bienvenida{
+      flex:1;
+      min-width:280px;
+    }
+    .texto-bienvenida h3{
+      font-size:1.9rem;
+      color:#1e3a8a;
+      margin-bottom:1rem;
+    }
+    .texto-bienvenida p{margin-bottom:.9rem;font-size:.97rem;color:#374151}
+    .btn-hero-group{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.8rem}
+    .profile-img{
+      width:240px;
+      height:240px;
+      object-fit:cover;
+      border-radius:40%;
+      border:4px solid #dbeafe;
+      box-shadow:var(--shadow-soft);
+      margin:auto;
+      background:#eff6ff;
+    }
+
+    /* CARD GENÉRICA */
+    .card{
+      background:var(--w);
+      border-radius:var(--radius-card);
+      padding:1.6rem 1.6rem 1.5rem;
+      margin:1.4rem 0;
+      box-shadow:var(--shadow-card);
+      transition:var(--t);
+      border:1px solid rgba(0,0,0,.06);
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 14px 38px rgba(0,0,0,.14);
+    }
+    .card strong{display:block;margin-bottom:.2rem}
+    .card em{display:block;margin-bottom:.4rem;font-size:.9rem;color:#6b7280}
+
+    /* BOTONES */
+    .btn-animated{
+      position:relative;
+      overflow:hidden;
+      padding:.8rem 1.4rem;
+      background:var(--p);
+      color:#f9fafb !important;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:.9rem;
+      transition:.35s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      cursor:pointer;
+    }
+    .btn-animated::before{
+      content:"";
+      position:absolute;
+      top:0;left:-120%;
+      width:120%;height:100%;
+      background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.7)50%,transparent 100%);
+      transform:skewX(-20deg);
+      transition:.55s;
+    }
+    .btn-animated:hover::before{left:120%}
+    .btn-animated:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 40px rgba(0,0,0,.22);
+      background:var(--p-dark);
+    }
+    .btn-ghost{
+      border-radius:999px;
+      padding:.75rem 1.3rem;
+      border:1px solid rgba(148,163,184,.6);
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:600;
+      color:#111827;
+      background:#f9fafb;
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      transition:var(--t);
+      cursor:pointer;
+    }
+    .btn-ghost:hover{
+      background:#e5edff;
+      border-color:#93c5fd;
+      transform:translateY(-1px);
+    }
+
+    /* FORMACIÓN – CATEGORÍAS */
+    .formacion-icon{
+      width:32px;
+      height:32px;
+      stroke:var(--p);
+      stroke-width:1.3;
+      margin-bottom:.1rem;
+    }
+    .category-block{
+      background:var(--w);
+      border-radius:var(--radius-card);
+      padding:2rem 1.8rem;
+      margin:2rem 0;
+      box-shadow:var(--shadow-card);
+      transition:var(--t);
+      border:1px solid rgba(0,0,0,.06);
+    }
+    .category-block:hover{
+      box-shadow:0 18px 40px rgba(0,0,0,.16);
+      transform:translateY(-3px);
+    }
+    .category-title{
+      font-size:1.35rem;
+      font-weight:700;
+      color:#1d4ed8;
+      margin-bottom:1.1rem;
+      display:flex;
+      align-items:center;
+      gap:.7rem;
+    }
+    .course-item{
+      background:#f5f7ff;
+      border-radius:16px;
+      padding:1.05rem 1.1rem;
+      margin-top:.85rem;
+      border-left:4px solid #93c5fd;
+      transition:var(--t);
+      font-size:.94rem;
+    }
+    .course-item strong{display:block;margin-bottom:.2rem}
+    .course-item:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(148,163,184,.4);
+      background:#eef2ff;
+    }
+
+    /* EXPERIENCIA */
+    #experiencia h2{margin-top:.4rem}
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.8rem;
+      margin-top:1.5rem;
+    }
+
+    /* MOCKUPS APPLE */
+    .mockup-shell{
+      background:#020617;
+      border-radius:24px;
+      padding:14px 14px 18px;
+      margin-top:1rem;
+      box-shadow:0 22px 45px rgba(15,23,42,.55);
+      position:relative;
+      overflow:hidden;
+    }
+    .mockup-shell::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 0 0,rgba(148,163,184,.5),transparent 60%);
+      opacity:.35;
+      pointer-events:none;
+    }
+    .mockup-screen{
+      border-radius:15px;
+      overflow:hidden;
+      background:#020617;
+      border:1px solid rgba(148,163,184,.6);
+    }
+    .mockup-screen img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+    .mockup-bottom{
+      margin:0 auto;
+      margin-top:9px;
+      width:72%;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(to right,#020617,#1f2937,#020617);
+    }
+
+    /* CONTACTO */
+    .contact-grid{
+      display:grid;
+      gap:1.4rem;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    }
+    .contact-card{
+      padding:1.4rem 1.5rem;
+      background:var(--w);
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      border-radius:var(--radius-card);
+      box-shadow:var(--shadow-card);
+      border:1px solid rgba(0,0,0,.06);
+      transition:var(--t);
+    }
+    .contact-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
+    }
+    .contact-icon-circle{
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      background:#e5edff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+      color:#1d4ed8;
+    }
+    .contact-icon-circle i{
+      width:20px;
+      height:20px;
+    }
+    .contact-card a{
+      color:#1d4ed8;
+      text-decoration:none;
+      font-weight:500;
+    }
+
+    /* FOOTER */
+    footer{
+      background:#0f172a;
+      color:#e5e7eb;
+      text-align:center;
+      padding:2rem 1rem;
+      font-size:.9rem;
+      letter-spacing:.03em;
+    }
+
+    /* MENÚ FLOTANTE ÚNICO */
+    .floating-menu{
+      position:fixed;
+      bottom:18px;
+      left:50%;
+      transform:translateX(-50%);
+      background:rgba(255,255,255,.9);
+      color:#111827;
+      backdrop-filter:blur(16px);
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
+      padding:.55rem 1.1rem;
+      border-radius:999px;
+      display:flex;
+      gap:1.4rem;
+      z-index:999;
+      border:1px solid rgba(209,213,219,.7);
+      animation:fadeUp .6s ease;
+    }
+    .floating-menu a{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      font-size:.7rem;
+      text-decoration:none;
+      color:#111827;
+      opacity:.9;
+      transition:.25s ease;
+      cursor:pointer;
+    }
+    .floating-menu i{
+      width:18px;height:18px;margin-bottom:.15rem;
+    }
+    .floating-menu a.active,
+    .floating-menu a:hover{
+      color:var(--p-dark);
+      opacity:1;
+    }
+    .floating-menu a.active i,
+    .floating-menu a:hover i{
+      transform:translateY(-2px);
+    }
+    @keyframes fadeUp{
+      from{opacity:0;transform:translate(-50%,18px)}
+      to{opacity:1;transform:translate(-50%,0)}
+    }
+
+    @media(max-width:720px){
+      .presentacion{padding:1.6rem 1.3rem}
+      .category-block{padding:1.7rem 1.4rem}
+      .projects-grid{grid-template-columns:1fr}
+    }
+
+    /* ICONOS FEATHER EN AZUL PRINCIPAL */
+    svg.feather{stroke:var(--p)!important}
+  </style>
 </head>
 <body>
-<div id="loader"><div id="loader-logo">AGE</div></div>
 
-<header>
-  <h1>Alicia Guardiola</h1>
-  <h2>Especialista en Marketing Digital &amp; Comunicación Creativa</h2>
-  <p>Empática. Estratégica. Apasionada. Lista para tu próximo proyecto 💡</p>
-</header>
+  <!-- LOADER -->
+  <div id="loader">
+    <div id="loader-logo">AGE</div>
+  </div>
 
-<div class="nav-container">
-  <nav>
-    <div class="logo">AGE</div>
-    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-    <ul class="nav-links">
-      <li><a class="nav-link active" data-section="inicio"><i data-feather="home"></i><span>Inicio</span></a></li>
-      <li><a class="nav-link" data-section="formacion"><i data-feather="book-open"></i><span>Formación</span></a></li>
-      <li><a class="nav-link" data-section="experiencia"><i data-feather="briefcase"></i><span>Experiencia</span></a></li>
-      <li><a class="nav-link" data-section="contacto"><i data-feather="mail"></i><span>Contacto</span></a></li>
-    </ul>
-  </nav>
-</div>
+  <!-- HEADER -->
+  <header>
+    <h1>Alicia Guardiola</h1>
+    <h2>Especialista en Marketing Digital &amp; Comunicación Creativa</h2>
+    <p>Empática. Estratégica. Apasionada. Lista para tu próximo proyecto 💡</p>
+  </header>
 
-<main>
+  <main>
 
-  <!-- INICIO -->
-  <section id="inicio" class="section-content active">
-    <div class="presentacion fade-in">
-      <div class="texto-bienvenida">
-        <h3>Bienvenidos a mi espacio profesional</h3>
-        <p>Mi nombre es Alicia Guardiola y soy especialista en marketing digital, estrategia de contenidos y comunicación con propósito. Disfruto uniendo creatividad y datos para diseñar acciones que conecten con las personas y generen resultados medibles.</p>
-        <p>He trabajado en proyectos de social media, posicionamiento orgánico, email marketing y diseño web, lo que me permite entender el ecosistema digital de forma integral: desde la idea creativa hasta la analítica final.</p>
-        <p>Busco incorporarme a una agencia de marketing donde pueda aportar mi visión estratégica, mi sensibilidad por el diseño y mi capacidad para ejecutar campañas que realmente marquen la diferencia para las marcas.</p>
-        <p>Si estás buscando a alguien resolutivo, con actitud proactiva y ganas de seguir creciendo en equipo, estaré encantada de hablar contigo. 📚💼</p>
-        <div class="btn-hero-group">
-          <a class="btn-animated" href="CV-Alicia-Guardiola.pdf" download>
-            <i data-feather="download"></i>
-            Descargar mi CV
+    <!-- INICIO -->
+    <section id="inicio" class="section-content active">
+      <div class="presentacion fade-in">
+        <div class="texto-bienvenida">
+          <h3>Bienvenidos a mi espacio profesional</h3>
+          <p>Mi nombre es Alicia Guardiola y soy especialista en marketing digital, estrategia de contenidos y comunicación con propósito. Disfruto uniendo creatividad y datos para diseñar acciones que conecten con las personas y generen resultados medibles.</p>
+          <p>He trabajado en proyectos de social media, posicionamiento orgánico, email marketing y diseño web, lo que me permite entender el ecosistema digital de forma integral: desde la idea creativa hasta la analítica final.</p>
+          <p>Busco incorporarme a una agencia de marketing donde pueda aportar mi visión estratégica, mi sensibilidad por el diseño y mi capacidad para ejecutar campañas que realmente marquen la diferencia para las marcas.</p>
+          <p>Si estás buscando a alguien resolutivo, con actitud proactiva y ganas de seguir creciendo en equipo, estaré encantada de hablar contigo. 📚💼</p>
+
+          <div class="btn-hero-group">
+            <a class="btn-animated" href="CV%20-%20Alicia%20Guardiola.pdf" download>
+              <i data-feather="download"></i>
+              Descargar mi CV
+            </a>
+            <a class="btn-ghost" data-section="contacto">
+              <i data-feather="send"></i>
+              Hablemos de tu proyecto
+            </a>
+          </div>
+        </div>
+
+        <img src="alicia.png" alt="Alicia Guardiola" class="profile-img">
+      </div>
+    </section>
+
+    <!-- FORMACIÓN -->
+    <section id="formacion" class="section-content">
+      <h2>🎓 Formación Académica</h2>
+
+      <div class="card fade-in">
+        <strong>Grado en Marketing y Dirección Comercial</strong>
+        <em>Universidad Católica de San Antonio (2021 - 2025)</em>
+        <p>Grado centrado en estrategia de marketing, dirección comercial, análisis de mercado y comportamiento del consumidor. Me ha permitido entender cómo conectar objetivos de negocio con acciones concretas en canales digitales y cómo medir el impacto real de cada campaña.</p>
+      </div>
+
+      <div class="card fade-in">
+        <strong>Máster en Diseño Gráfico</strong>
+        <em>UDIT – Universidad de Diseño, Innovación y Tecnología (Comienza en 2026)</em>
+        <p>Próxima especialización enfocada en comunicación visual, branding, diseño digital y dirección de arte. Complementará mi perfil de marketing aportando una visión aún más sólida sobre identidad visual, diseño de interfaces y experiencias digitales alineadas con los objetivos de marca.</p>
+      </div>
+
+      <!-- SOCIAL MEDIA & COMUNICACIÓN -->
+      <div class="category-block fade-in">
+        <div class="category-title">
+          <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8h2a4 4 0 0 1 0 8h-2M7 16H5a4 4 0 1 1 0-8h2m2 12 2 2 2-2m0-16-2-2-2 2"/></svg>
+          Social Media &amp; Comunicación
+        </div>
+
+        <div class="course-item">
+          <strong>Estrategia de comunicación para redes sociales – Domestika</strong>
+          <p>Diseño de mensajes claros y coherentes con la voz de marca, planificación de contenidos por objetivos y creación de piezas adaptadas a cada plataforma social.</p>
+        </div>
+
+        <div class="course-item">
+          <strong>Estrategia para redes sociales: crea, gestiona y lanza campañas – Domestika</strong>
+          <p>Metodología para diseñar campañas de social media de principio a fin: desde la idea creativa y el calendario de contenidos hasta la medición de resultados.</p>
+        </div>
+
+        <div class="course-item">
+          <strong>Community Manager y reputación online – SEF</strong>
+          <p>Gestión profesional de comunidades digitales, atención al usuario, gestión de crisis y construcción de reputación positiva para marcas en entornos sociales.</p>
+        </div>
+
+        <div class="course-item">
+          <strong>Copywriting para copywriters – PutosModernos®</strong>
+          <p>Copywriting creativo y persuasivo orientado a campañas, anuncios, piezas digitales y tono de marca diferenciador, con foco en conectar y convertir.</p>
+        </div>
+      </div>
+
+      <!-- MARKETING DIGITAL -->
+      <div class="category-block fade-in">
+        <div class="category-title">
+          <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg>
+          Marketing Digital &amp; Estrategia
+        </div>
+
+        <div class="course-item">
+          <strong>Desarrollo de un Plan de Marketing Digital – SEF</strong>
+          <p>Diseño de planes integrales basados en análisis de audiencia, definición de objetivos, propuesta de valor y selección de canales y tácticas digitales.</p>
+        </div>
+
+        <div class="course-item">
+          <strong>Marketing Digital – HubSpot</strong>
+          <p>Visión global del ecosistema digital: campañas multicanal, automatización, email marketing, analítica y optimización de conversiones.</p>
+        </div>
+
+        <div class="course-item">
+          <strong>Inbound Marketing – HubSpot</strong>
+          <p>Estrategias de atracción y fidelización basadas en contenido de valor, buyer journey y creación de embudos que convierten tráfico en oportunidades.</p>
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <div class="category-block fade-in">
+        <div class="category-title">
+          <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4-4"></path></svg>
+          SEO &amp; Posicionamiento Web
+        </div>
+
+        <div class="course-item">
+          <strong>SEO – HubSpot</strong>
+          <p>Fundamentos de posicionamiento orgánico: búsqueda de palabras clave, estructura de contenidos, optimización on-page y generación de tráfico cualificado.</p>
+        </div>
+
+        <div class="course-item">
+          <strong>SEO II – HubSpot</strong>
+          <p>SEO técnico y avanzado: arquitectura web, rendimiento, Core Web Vitals, migraciones y análisis competitivo para mejorar visibilidad en buscadores.</p>
+        </div>
+      </div>
+
+      <!-- BRANDING -->
+      <div class="category-block fade-in">
+        <div class="category-title">
+          <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2v20m-7-7h14"></path></svg>
+          Branding &amp; Customer Experience
+        </div>
+
+        <div class="course-item">
+          <strong>Creation &amp; Branding, Retail &amp; Customer Experience – LVMH</strong>
+          <p>Visión estratégica de marcas de lujo, diseño de experiencias coherentes en todos los puntos de contacto y construcción de propuestas de valor diferenciales.</p>
+        </div>
+      </div>
+
+      <!-- DESARROLLO WEB -->
+      <div class="category-block fade-in">
+        <div class="category-title">
+          <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12l-3 3 3 3m8-6 3 3-3 3m-2-10-4 14"></path></svg>
+          Desarrollo Web
+        </div>
+
+        <div class="course-item">
+          <strong>HTML5, CSS3 y JavaScript Nivel I – SEF</strong>
+          <p>Fundamentos de maquetación, estructura semántica y diseño responsive, entendiendo cómo se construyen las interfaces que luego se optimizan desde marketing.</p>
+        </div>
+
+        <div class="course-item">
+          <strong>HTML5, CSS3 y JavaScript Nivel II – SEF</strong>
+          <p>Desarrollo web más avanzado con interactividad y animaciones, facilitando la comunicación con equipos técnicos y la optimización de la experiencia del usuario.</p>
+        </div>
+      </div>
+
+      <!-- LEGAL -->
+      <div class="category-block fade-in">
+        <div class="category-title">
+          <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          Protección de Datos
+        </div>
+
+        <div class="course-item">
+          <strong>Protección de Datos Personales – SEF</strong>
+          <p>Conocimientos en RGPD/LOPDGDD aplicados al entorno digital: tratamiento responsable de datos, formularios de captación y campañas respetuosas con la privacidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section id="experiencia" class="section-content">
+      <h2>Experiencia laboral</h2>
+
+      <div class="card fade-in">
+        <strong>Web Content Manager – San Aburico SL (jun 2025 – ago 2025)</strong>
+        <p>Gestión y actualización del catálogo digital, optimizando tanto el diseño como la usabilidad de la web. Detecté y corregí errores visuales y de estructura, mejorando la claridad del contenido y la experiencia de usuario. Trabajé en la optimización del rendimiento del sitio, reduciendo tiempos de carga y garantizando una correcta visualización en dispositivos móviles.</p>
+        <p>Esta experiencia refuerza mi capacidad para revisar webs con mirada crítica, proponer mejoras que impactan en la conversión y colaborar con equipos técnicos y de negocio para hacer crecer el canal digital.</p>
+      </div>
+
+      <div class="card fade-in">
+        <strong>Community Manager – Bootik Branding (abr 2025 – may 2025)</strong>
+        <p>Creación y gestión de contenido para redes sociales con enfoque en crecimiento de marca y conexión con la audiencia. Diseñé posts, reels e historias, combinando herramientas como CapCut e inteligencia artificial para producir contenido atractivo y ágil.</p>
+        <p>Analicé métricas clave (alcance, engagement, crecimiento de comunidad) para ajustar la estrategia de contenidos y reforzar la identidad visual y verbal de la marca, siempre orientada a resultados.</p>
+      </div>
+
+      <div class="card fade-in">
+        <strong>Asistente de Marketing – MDM (jun 2024 – ago 2024)</strong>
+        <p>Redacción y estrategia de contenidos para blog y redes sociales, aplicando técnicas de SEO que contribuyeron a incrementar el tráfico orgánico. Diseñé y gestioné campañas de email marketing segmentadas, alcanzando tasas de apertura y conversión por encima de la media.</p>
+        <p>Maqueté contenidos en WordPress, cuidando la estética y la experiencia de usuario. Además, participé en la dinamización de redes sociales y en el análisis de resultados para optimizar acciones posteriores.</p>
+      </div>
+
+      <h2 style="margin-top:3rem;">Proyectos realizados</h2>
+
+      <div class="projects-grid">
+        <div class="card fade-in">
+          <strong>MI ARTESANA SHOP – E-commerce artesanal</strong>
+          <p>Creación completa de tienda online: arquitectura de la web, diseño visual, experiencia de compra y enfoque SEO local para captar clientes en el entorno cercano.</p>
+
+          <div class="mockup-shell">
+            <div class="mockup-screen">
+              <img src="Captura%20de%20pantalla%202025-11-25%20a%20las%2016.12.48.png" alt="Proyecto Mi Artesana Shop">
+            </div>
+            <div class="mockup-bottom"></div>
+          </div>
+
+          <a href="https://miartesanashop.com" target="_blank" class="btn-animated" style="margin-top:1rem;">
+            <i data-feather="external-link"></i>
+            Ver sitio
           </a>
-          <a class="btn-ghost" data-section="contacto">
-            <i data-feather="send"></i>
-            Hablemos de tu proyecto
+        </div>
+
+        <div class="card fade-in">
+          <strong>OJO POR OJO Óptica – E-commerce</strong>
+          <p>Diseño y desarrollo de la web de una óptica local con enfoque en usabilidad, personalidad de marca y venta online, cuidando la experiencia desde la home hasta el checkout.</p>
+
+          <div class="mockup-shell">
+            <div class="mockup-screen">
+              <img src="Captura%20de%20pantalla%202025-11-25%20a%20las%2016.13.08.png" alt="Proyecto Ojo por Ojo Óptica">
+            </div>
+            <div class="mockup-bottom"></div>
+          </div>
+
+          <a href="https://ojoporojooptica.com" target="_blank" class="btn-animated" style="margin-top:1rem;">
+            <i data-feather="external-link"></i>
+            Ver sitio
+          </a>
+        </div>
+
+        <div class="card fade-in">
+          <strong>GUCONST – Sitio Corporativo</strong>
+          <p>Desarrollo de página corporativa para una empresa de construcción, con estructura clara, jerarquía visual y contenido orientado a reforzar la confianza y la captación de clientes.</p>
+
+          <div class="mockup-shell">
+            <div class="mockup-screen">
+              <img src="Captura%20de%20pantalla%202025-11-25%20a%20las%2016.13.23.png" alt="Proyecto GUCONST">
+            </div>
+            <div class="mockup-bottom"></div>
+          </div>
+
+          <a href="https://guconst.es" target="_blank" class="btn-animated" style="margin-top:1rem;">
+            <i data-feather="external-link"></i>
+            Ver sitio
           </a>
         </div>
       </div>
-      <img src="alicia.png" alt="Alicia Guardiola" class="profile-img">
-    </div>
-  </section>
+    </section>
 
-  <!-- FORMACIÓN -->
-  <section id="formacion" class="section-content">
-    <h2>🎓 Formación Académica</h2>
+    <!-- CONTACTO -->
+    <section id="contacto" class="section-content">
+      <h2>Contacto</h2>
+      <p>Disponible para nuevas oportunidades en agencia de marketing, proyectos digitales y colaboraciones.</p>
 
-    <div class="card fade-in">
-      <strong>Grado en Marketing y Dirección Comercial</strong>
-      <em>Universidad Católica de San Antonio (2021 - 2025)</em>
-      <p>Grado centrado en estrategia de marketing, dirección comercial, análisis de mercado y comportamiento del consumidor. Me ha permitido entender cómo conectar objetivos de negocio con acciones concretas en canales digitales y cómo medir el impacto real de cada campaña.</p>
-    </div>
-
-    <div class="card fade-in">
-      <strong>Máster en Diseño Gráfico</strong>
-      <em>UDIT – Universidad de Diseño, Innovación y Tecnología (Comienza en 2026)</em>
-      <p>Próxima especialización enfocada en comunicación visual, branding, diseño digital y dirección de arte. Complementará mi perfil de marketing aportando una visión aún más sólida sobre identidad visual, diseño de interfaces y experiencias digitales alineadas con los objetivos de marca.</p>
-    </div>
-
-    <!-- SOCIAL MEDIA & COMUNICACIÓN -->
-    <div class="category-block fade-in">
-      <div class="category-title">
-        <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8h2a4 4 0 0 1 0 8h-2M7 16H5a4 4 0 1 1 0-8h2m2 12 2 2 2-2m0-16-2-2-2 2"/></svg>
-        Social Media &amp; Comunicación
-      </div>
-
-      <div class="course-item">
-        <strong>Estrategia de comunicación para redes sociales – Domestika</strong>
-        <p>Diseño de mensajes claros y coherentes con la voz de marca, planificación de contenidos por objetivos y creación de piezas adaptadas a cada plataforma social.</p>
-      </div>
-
-      <div class="course-item">
-        <strong>Estrategia para redes sociales: crea, gestiona y lanza campañas – Domestika</strong>
-        <p>Metodología para diseñar campañas de social media de principio a fin: desde la idea creativa y el calendario de contenidos hasta la medición de resultados.</p>
-      </div>
-
-      <div class="course-item">
-        <strong>Community Manager y reputación online – SEF</strong>
-        <p>Gestión profesional de comunidades digitales, atención al usuario, gestión de crisis y construcción de reputación positiva para marcas en entornos sociales.</p>
-      </div>
-
-      <div class="course-item">
-        <strong>Copywriting para copywriters – PutosModernos®</strong>
-        <p>Copywriting creativo y persuasivo orientado a campañas, anuncios, piezas digitales y tono de marca diferenciador, con foco en conectar y convertir.</p>
-      </div>
-    </div>
-
-    <!-- MARKETING DIGITAL -->
-    <div class="category-block fade-in">
-      <div class="category-title">
-        <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg>
-        Marketing Digital &amp; Estrategia
-      </div>
-
-      <div class="course-item">
-        <strong>Desarrollo de un Plan de Marketing Digital – SEF</strong>
-        <p>Diseño de planes integrales basados en análisis de audiencia, definición de objetivos, propuesta de valor y selección de canales y tácticas digitales.</p>
-      </div>
-
-      <div class="course-item">
-        <strong>Marketing Digital – HubSpot</strong>
-        <p>Visión global del ecosistema digital: campañas multicanal, automatización, email marketing, analítica y optimización de conversiones.</p>
-      </div>
-
-      <div class="course-item">
-        <strong>Inbound Marketing – HubSpot</strong>
-        <p>Estrategias de atracción y fidelización basadas en contenido de valor, buyer journey y creación de embudos que convierten tráfico en oportunidades.</p>
-      </div>
-    </div>
-
-    <!-- SEO -->
-    <div class="category-block fade-in">
-      <div class="category-title">
-        <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4-4"></path></svg>
-        SEO &amp; Posicionamiento Web
-      </div>
-
-      <div class="course-item">
-        <strong>SEO – HubSpot</strong>
-        <p>Fundamentos de posicionamiento orgánico: búsqueda de palabras clave, estructura de contenidos, optimización on-page y generación de tráfico cualificado.</p>
-      </div>
-
-      <div class="course-item">
-        <strong>SEO II – HubSpot</strong>
-        <p>SEO técnico y avanzado: arquitectura web, rendimiento, Core Web Vitals, migraciones y análisis competitivo para mejorar visibilidad en buscadores.</p>
-      </div>
-    </div>
-
-    <!-- BRANDING -->
-    <div class="category-block fade-in">
-      <div class="category-title">
-        <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2v20m-7-7h14"></path></svg>
-        Branding &amp; Customer Experience
-      </div>
-
-      <div class="course-item">
-        <strong>Creation &amp; Branding, Retail &amp; Customer Experience – LVMH</strong>
-        <p>Visión estratégica de marcas de lujo, diseño de experiencias coherentes en todos los puntos de contacto y construcción de propuestas de valor diferenciales.</p>
-      </div>
-    </div>
-
-    <!-- DESARROLLO WEB -->
-    <div class="category-block fade-in">
-      <div class="category-title">
-        <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12l-3 3 3 3m8-6 3 3-3 3m-2-10-4 14"></path></svg>
-        Desarrollo Web
-      </div>
-
-      <div class="course-item">
-        <strong>HTML5, CSS3 y JavaScript Nivel I – SEF</strong>
-        <p>Fundamentos de maquetación, estructura semántica y diseño responsive, entendiendo cómo se construyen las interfaces que luego se optimizan desde marketing.</p>
-      </div>
-
-      <div class="course-item">
-        <strong>HTML5, CSS3 y JavaScript Nivel II – SEF</strong>
-        <p>Desarrollo web más avanzado con interactividad y animaciones, facilitando la comunicación con equipos técnicos y la optimización de la experiencia del usuario.</p>
-      </div>
-    </div>
-
-    <!-- LEGAL -->
-    <div class="category-block fade-in">
-      <div class="category-title">
-        <svg class="formacion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        Protección de Datos
-      </div>
-
-      <div class="course-item">
-        <strong>Protección de Datos Personales – SEF</strong>
-        <p>Conocimientos en RGPD/LOPDGDD aplicados al entorno digital: tratamiento responsable de datos, formularios de captación y campañas respetuosas con la privacidad.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCIA -->
-  <section id="experiencia" class="section-content">
-    <h2>Experiencia laboral</h2>
-
-    <div class="card fade-in">
-      <strong>Web Content Manager – San Aburico SL (jun 2025 – ago 2025)</strong>
-      <p>Gestión y actualización del catálogo digital, optimizando tanto el diseño como la usabilidad de la web. Detecté y corregí errores visuales y de estructura, mejorando la claridad del contenido y la experiencia de usuario. Trabajé en la optimización del rendimiento del sitio, reduciendo tiempos de carga y garantizando una correcta visualización en dispositivos móviles.</p>
-      <p>Esta experiencia refuerza mi capacidad para revisar webs con mirada crítica, proponer mejoras que impactan en la conversión y colaborar con equipos técnicos y de negocio para hacer crecer el canal digital.</p>
-    </div>
-
-    <div class="card fade-in">
-      <strong>Community Manager – Bootik Branding (abr 2025 – may 2025)</strong>
-      <p>Creación y gestión de contenido para redes sociales con enfoque en crecimiento de marca y conexión con la audiencia. Diseñé posts, reels e historias, combinando herramientas como CapCut e inteligencia artificial para producir contenido atractivo y ágil.</p>
-      <p>Analicé métricas clave (alcance, engagement, crecimiento de comunidad) para ajustar la estrategia de contenidos y reforzar la identidad visual y verbal de la marca, siempre orientada a resultados.</p>
-    </div>
-
-    <div class="card fade-in">
-      <strong>Asistente de Marketing – MDM (jun 2024 – ago 2024)</strong>
-      <p>Redacción y estrategia de contenidos para blog y redes sociales, aplicando técnicas de SEO que contribuyeron a incrementar el tráfico orgánico. Diseñé y gestioné campañas de email marketing segmentadas, alcanzando tasas de apertura y conversión por encima de la media.</p>
-      <p>Maqueté contenidos en WordPress, cuidando la estética y la experiencia de usuario. Además, participé en la dinamización de redes sociales y en el análisis de resultados para optimizar acciones posteriores.</p>
-    </div>
-
-    <h2 style="margin-top:3rem;">Proyectos realizados</h2>
-
-    <div class="projects-grid">
-      <div class="card fade-in">
-        <strong>MI ARTESANA SHOP – E-commerce artesanal</strong>
-        <p>Creación completa de tienda online: arquitectura de la web, diseño visual, experiencia de compra y enfoque SEO local para captar clientes en el entorno cercano.</p>
-        <div class="mockup-shell">
-          <div class="mockup-screen">
-            <img src="Captura1.png" alt="Proyecto Mi Artesana Shop">
+      <div class="contact-grid">
+        <div class="contact-card fade-in">
+          <div class="contact-icon-circle">
+            <i data-feather="mail"></i>
           </div>
-          <div class="mockup-bottom"></div>
-        </div>
-        <a href="https://miartesanashop.com" target="_blank" class="btn-animated" style="margin-top:1rem;">
-          <i data-feather="external-link"></i>
-          Ver sitio
-        </a>
-      </div>
-
-      <div class="card fade-in">
-        <strong>OJO POR OJO Óptica – E-commerce</strong>
-        <p>Diseño y desarrollo de la web de una óptica local con enfoque en usabilidad, personalidad de marca y venta online, cuidando la experiencia desde la home hasta el checkout.</p>
-        <div class="mockup-shell">
-          <div class="mockup-screen">
-            <img src="Captura2.png" alt="Proyecto Ojo por Ojo Óptica">
+          <div>
+            <strong>Email</strong><br>
+            <a href="mailto:aliciiage@gmail.com">aliciiage@gmail.com</a>
           </div>
-          <div class="mockup-bottom"></div>
         </div>
-        <a href="https://ojoporojooptica.com" target="_blank" class="btn-animated" style="margin-top:1rem;">
-          <i data-feather="external-link"></i>
-          Ver sitio
-        </a>
-      </div>
 
-      <div class="card fade-in">
-        <strong>GUCONST – Sitio corporativo</strong>
-        <p>Desarrollo de página corporativa para una empresa de construcción, con estructura clara, jerarquía visual y contenido orientado a reforzar la confianza y la captación de clientes.</p>
-        <div class="mockup-shell">
-          <div class="mockup-screen">
-            <img src="Captura3.png" alt="Proyecto GUCONST">
+        <div class="contact-card fade-in">
+          <div class="contact-icon-circle">
+            <i data-feather="phone"></i>
           </div>
-          <div class="mockup-bottom"></div>
+          <div>
+            <strong>Teléfono</strong><br>
+            <a href="tel:+34630200095">+34 630 20 00 95</a>
+          </div>
         </div>
-        <a href="https://guconst.es" target="_blank" class="btn-animated" style="margin-top:1rem;">
-          <i data-feather="external-link"></i>
-          Ver sitio
-        </a>
-      </div>
-    </div>
-  </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="section-content">
-    <h2>Contacto</h2>
-    <p>Disponible para nuevas oportunidades en agencia de marketing, proyectos digitales y colaboraciones.</p>
+        <div class="contact-card fade-in">
+          <div class="contact-icon-circle">
+            <i data-feather="map-pin"></i>
+          </div>
+          <div>
+            <strong>Ubicación</strong><br>
+            Murcia, España
+          </div>
+        </div>
 
-    <div class="contact-grid">
-      <div class="contact-card fade-in">
-        <div class="contact-icon-circle">
-          <i data-feather="mail"></i>
-        </div>
-        <div>
-          <strong>Email</strong><br>
-          <a href="mailto:aliciiage@gmail.com">aliciiage@gmail.com</a>
-        </div>
-      </div>
-
-      <div class="contact-card fade-in">
-        <div class="contact-icon-circle">
-          <i data-feather="phone"></i>
-        </div>
-        <div>
-          <strong>Teléfono</strong><br>
-          <a href="tel:+34630200095">+34 630 20 00 95</a>
+        <div class="contact-card fade-in">
+          <div class="contact-icon-circle">
+            <i data-feather="linkedin"></i>
+          </div>
+          <div>
+            <strong>LinkedIn</strong><br>
+            <a href="https://www.linkedin.com/in/alicia-guardiola-/" target="_blank">Ver perfil</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="contact-card fade-in">
-        <div class="contact-icon-circle">
-          <i data-feather="map-pin"></i>
-        </div>
-        <div>
-          <strong>Ubicación</strong><br>
-          Murcia, España
-        </div>
-      </div>
+  </main>
 
-      <div class="contact-card fade-in">
-        <div class="contact-icon-circle">
-          <i data-feather="linkedin"></i>
-        </div>
-        <div>
-          <strong>LinkedIn</strong><br>
-          <a href="https://www.linkedin.com/in/alicia-guardiola-/" target="_blank">Ver perfil</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <footer>
+    &copy; 2025 Alicia Guardiola – Estrategia, creatividad y resultados reales. ☕💙
+  </footer>
 
-</main>
+  <!-- MENÚ FLOTANTE ÚNICO -->
+  <div class="floating-menu">
+    <a class="floating-link active" data-section="inicio">
+      <i data-feather="home"></i>
+      <span>Inicio</span>
+    </a>
+    <a class="floating-link" data-section="formacion">
+      <i data-feather="book-open"></i>
+      <span>Formación</span>
+    </a>
+    <a class="floating-link" data-section="experiencia">
+      <i data-feather="briefcase"></i>
+      <span>Experiencia</span>
+    </a>
+    <a class="floating-link" data-section="contacto">
+      <i data-feather="mail"></i>
+      <span>Contacto</span>
+    </a>
+  </div>
 
-<footer>
-  &copy; 2025 Alicia Guardiola – Estrategia, creatividad y resultados reales. ☕💙
-</footer>
+  <script>
+    const sections=document.querySelectorAll('.section-content');
+    const floatingLinks=document.querySelectorAll('.floating-link');
+    const fadeElements=document.querySelectorAll('.fade-in');
 
-<!-- MENÚ FLOTANTE MÓVIL -->
-<div class="floating-menu">
-  <a class="floating-link active" data-section="inicio">
-    <i data-feather="home"></i>
-    <span>Inicio</span>
-  </a>
-  <a class="floating-link" data-section="formacion">
-    <i data-feather="book-open"></i>
-    <span>Formación</span>
-  </a>
-  <a class="floating-link" data-section="experiencia">
-    <i data-feather="briefcase"></i>
-    <span>Experiencia</span>
-  </a>
-  <a class="floating-link" data-section="contacto">
-    <i data-feather="mail"></i>
-    <span>Contacto</span>
-  </a>
-</div>
+    function showSection(id){
+      sections.forEach(sec=>sec.classList.remove('active'));
+      const target=document.getElementById(id);
+      if(target){target.classList.add('active');}
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
 
-<script>
-const menuToggle=document.querySelector('.menu-toggle');
-const navLinks=document.querySelector('.nav-links');
-const links=document.querySelectorAll('.nav-link');
-const sections=document.querySelectorAll('.section-content');
-const floatingLinks=document.querySelectorAll('.floating-link');
-const fadeElements=document.querySelectorAll('.fade-in');
+    floatingLinks.forEach(link=>{
+      link.addEventListener('click',()=>{
+        floatingLinks.forEach(l=>l.classList.remove('active'));
+        link.classList.add('active');
+        const id=link.dataset.section;
+        showSection(id);
+      });
+    });
 
-menuToggle.addEventListener('click',()=>navLinks.classList.toggle('show'));
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    },{threshold:.2});
 
-function showSection(id){
-  sections.forEach(sec=>sec.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+    fadeElements.forEach(el=>obs.observe(el));
 
-links.forEach(link=>{
-  link.addEventListener('click',()=>{
-    links.forEach(l=>l.classList.remove('active'));
-    link.classList.add('active');
-    const id=link.dataset.section;
-    showSection(id);
-    navLinks.classList.remove('show');
-  });
-});
+    // Feather icons
+    feather.replace();
 
-floatingLinks.forEach(link=>{
-  link.addEventListener('click',()=>{
-    floatingLinks.forEach(l=>l.classList.remove('active'));
-    link.classList.add('active');
-    const id=link.dataset.section;
-    showSection(id);
-  });
-});
-
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){entry.target.classList.add('show');}
-  });
-},{threshold:.2});
-
-fadeElements.forEach(el=>obs.observe(el));
-
-feather.replace();
-
-document.querySelectorAll('.btn-ghost[data-section="contacto"]').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    showSection('contacto');
-    links.forEach(l=>l.classList.remove('active'));
-    document.querySelector('.nav-link[data-section="contacto"]').classList.add('active');
-  });
-});
-</script>
+    // Botón "Hablemos de tu proyecto" -> sección contacto
+    document.querySelectorAll('.btn-ghost[data-section="contacto"]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        showSection('contacto');
+        floatingLinks.forEach(l=>l.classList.remove('active'));
+        document.querySelector('.floating-link[data-section="contacto"]').classList.add('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
 
-</html>
