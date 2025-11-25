@@ -25,7 +25,6 @@
       padding: 0;
     }
     
-    /* Tipografía */
     html {
       font-size: 16px;
       scroll-behavior: smooth;
@@ -158,23 +157,20 @@
       color: var(--primary-color);
     }
 
-    /* Iconos del menú */
+    /* Iconos */
     .nav-links .material-icons {
       font-size: 1.2rem;
       vertical-align: middle;
       margin-right: 0.3rem;
-      position: relative;
-      top: -1px;
     }
 
-    /* Contenido principal */
     main {
       max-width: 1200px;
       margin: 0 auto;
       padding: 1rem;
     }
-    
-    /* Sección presentación */
+
+    /* Sección Presentación */
     .presentacion {
       display: flex;
       flex-wrap: wrap;
@@ -201,56 +197,30 @@
     
     .texto-bienvenida p {
       margin-bottom: 1rem;
-      color: var(--text-color);
-    }
-    
-    .profile-img-container {
-      flex: 0 1 300px;
-      text-align: center;
     }
     
     .profile-img {
       width: 100%;
       max-width: 250px;
-      height: auto;
-      aspect-ratio: 1/1;
       border-radius: 50%;
       border: 4px solid var(--primary-color);
       object-fit: cover;
       box-shadow: var(--shadow);
       transition: var(--transition);
     }
-    
-    .profile-img:hover {
-      transform: scale(1.05);
-    }
 
-    /* Secciones */
     .section-content {
       display: none;
       animation: fadeIn 0.5s ease forwards;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
     
     .section-content.active {
       display: block;
     }
 
-    section {
-      margin: 2rem 0;
-      padding: 1rem;
-    }
-    
-    section h2 {
-      color: var(--primary-color);
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--primary-color);
-      display: inline-block;
+    @keyframes fadeIn {
+      from {opacity:0;}
+      to {opacity:1;}
     }
 
     /* Cards */
@@ -268,50 +238,14 @@
       transform: translateY(-5px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
-    
-    .card strong {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-      color: var(--primary-color);
-    }
-    
-    .card em {
-      display: block;
-      margin: 0.5rem 0;
-      font-style: normal;
-      color: var(--text-light);
-    }
-    
-    .card ul {
-      padding-left: 1.5rem;
-      margin-top: 1rem;
-    }
-    
-    .card li {
-      margin-bottom: 0.5rem;
-      position: relative;
-    }
-    
-    .card li::before {
-      content: "•";
-      color: var(--primary-color);
-      font-weight: bold;
-      display: inline-block;
-      width: 1em;
-      margin-left: -1em;
-    }
 
     .project-img {
       width: 100%;
-      height: auto;
       border-radius: 8px;
       margin-top: 1rem;
       border: 1px solid #eee;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    /* Botón de proyecto */
     .project-button {
       display: inline-block;
       margin-top: 1rem;
@@ -320,67 +254,36 @@
       color: white;
       text-decoration: none;
       border-radius: 6px;
-      font-weight: 500;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      font-size: 0.9rem;
+      transition: 0.3s;
     }
-    
+
     .project-button:hover {
       background-color: #3a8de0;
       transform: translateY(-2px);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    }
-    
-    .project-button .material-icons {
-      font-size: 1rem;
-      vertical-align: middle;
-      margin-left: 0.3rem;
     }
 
-    /* Botón Descargar CV */
-    .btn-cv {
-      display: inline-block;
-      padding: 14px 28px;
-      background: #60AFFF;
-      color: white;
-      font-weight: 600;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: 0.25s ease;
-      margin-top: 20px;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .btn-cv:hover {
-      background: #4b9ae6;
-      transform: translateY(-3px);
-    }
-
-    /* Sección Contacto */
+    /* Contacto */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
-      margin-top: 2rem;
     }
-    
+
     .contact-card {
       background: var(--white);
       border-left: 5px solid var(--primary-color);
       padding: 1.5rem;
       border-radius: 12px;
       box-shadow: var(--shadow);
-      transition: var(--transition);
       display: flex;
       align-items: center;
+      transition: 0.3s;
     }
-    
+
     .contact-card:hover {
       transform: translateY(-3px);
     }
-    
+
     .contact-icon {
       background-color: var(--primary-light);
       width: 40px;
@@ -390,129 +293,14 @@
       align-items: center;
       justify-content: center;
       margin-right: 1rem;
-      flex-shrink: 0;
-    }
-    
-    .contact-icon .material-icons {
-      color: var(--primary-color);
-      font-size: 1.2rem;
-    }
-    
-    .contact-info {
-      flex: 1;
-    }
-    
-    .contact-info strong {
-      display: block;
-      color: var(--primary-color);
-      margin-bottom: 0.25rem;
-    }
-    
-    .contact-info a, .contact-info span {
-      color: var(--text-color);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    
-    .contact-info a:hover {
-      color: var(--primary-color);
-      text-decoration: underline;
     }
 
-    /* Footer */
     footer {
       background-color: var(--primary-color);
       color: var(--white);
       text-align: center;
       padding: 2rem 1rem;
       margin-top: 3rem;
-    }
-
-    /* Animaciones */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Media Queries para móviles */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-      }
-      
-      .nav-links.show {
-        display: flex;
-      }
-      
-      .nav-links li {
-        margin: 0;
-      }
-      
-      .nav-links a {
-        padding: 0.8rem 0;
-        border-bottom: 1px solid #eee;
-      }
-      
-      .nav-links a::after {
-        display: none;
-      }
-      
-      .presentacion {
-        flex-direction: column-reverse;
-        padding: 1.5rem;
-      }
-      
-      .texto-bienvenida {
-        min-width: 100%;
-      }
-      
-      section {
-        padding: 0.5rem;
-      }
-      
-      .card, .contact-card {
-        padding: 1.2rem;
-      }
-      
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        padding: 1.5rem 1rem;
-      }
-      
-      .presentacion {
-        padding: 1.2rem;
-      }
-      
-      .profile-img {
-        max-width: 200px;
-      }
-      
-      footer {
-        padding: 1.5rem 0.5rem;
-      }
     }
   </style>
 </head>
@@ -527,7 +315,7 @@
   <div class="nav-container">
     <nav>
       <div class="logo">AGE</div>
-      <button class="menu-toggle" aria-label="Menú">☰</button>
+      <button class="menu-toggle">☰</button>
       <ul class="nav-links">
         <li><a href="#" class="nav-link active" data-section="inicio"><i class="material-icons">home</i> Inicio</a></li>
         <li><a href="#" class="nav-link" data-section="formacion"><i class="material-icons">school</i> Formación</a></li>
@@ -538,7 +326,8 @@
   </div>
 
   <main>
-    <!-- Sección Inicio -->
+
+    <!-- 🟦 INICIO (RESTAURADO Y SIN BOTÓN) -->
     <section id="inicio" class="section-content active">
       <div class="presentacion">
         <div class="texto-bienvenida fade-in">
@@ -547,209 +336,142 @@
           <p>Me entusiasma explorar nuevas formas de conectar con las personas: desde una estrategia de redes, hasta el diseño de una web o el desarrollo de una campaña completa. Creo en las ideas que cuentan historias, en los datos que inspiran decisiones y en el trabajo en equipo como motor del cambio.</p>
           <p>He trabajado en distintos proyectos que me han permitido fortalecer mis habilidades como estratega digital, redactora, community manager y diseñadora de experiencias digitales. Cada experiencia me ha dado herramientas para aportar valor real, con empatía y visión creativa.</p>
           <p>Si buscas a alguien con iniciativa, visión, sensibilidad estética y capacidad de ejecución... estás en el lugar correcto. Te invito a conocer más sobre mi trayectoria en las siguientes secciones 📚💼</p>
-
-          <!-- Botón de descarga del CV -->
-          <a class="btn-cv" href="CV - Alicia Guardiola.pdf" download>
-            Descargar CV
-          </a>
         </div>
 
         <img src="alicia.png" alt="Alicia Guardiola" class="profile-img fade-in">
       </div>
     </section>
 
-    <!-- Sección Formación -->
+    <!-- 🎓 FORMACIÓN -->
     <section id="formacion" class="section-content">
       <h2>🎓 Formación Académica</h2>
+
       <div class="card fade-in">
         <strong>Grado en Marketing y Dirección Comercial</strong>
-        <em>Universidad Católica de San Antonio (2021 - 2025) - Especialidad: Marketing Digital</em>
-        <p>Desarrollé una base sólida en estrategia comercial, análisis de mercado, branding y comportamiento del consumidor. Mi especialización me preparó para diseñar campañas digitales efectivas con visión estratégica.</p>
-        <p>Mi Trabajo de Fin de Grado (TFG) se centró en analizar cómo el diseño web —especialmente el generado con inteligencia artificial (IA)— afecta la percepción del cliente, la experiencia de usuario (UX) y la confianza hacia marcas digitales, con especial atención a negocios locales.</p>
+        <em>Universidad Católica de San Antonio (2021 - 2025)</em>
+        <p>Desarrollé una base sólida en estrategia comercial, análisis de mercado, branding y comportamiento del consumidor.</p>
       </div>
 
       <div class="card fade-in">
         <strong>Máster en Diseño Gráfico</strong>
-        <em>Universidad de Diseño Gráfico e Industrias Creativas</em>
-        <p>Estoy cursando un máster en Diseño Gráfico en UDIT, donde profundizo en identidad visual, branding, tipografía, diseño editorial, UX/UI y comunicación digital.</p>
-        <p>Este programa refuerza mis habilidades creativas y técnicas para aplicarlas en proyectos profesionales.</p>
+        <em>UDIT – Universidad de Diseño, Innovación y Tecnología</em>
+        <p>Especialización en identidad visual, branding, tipografía, diseño editorial, UX/UI, packaging y comunicación digital.</p>
       </div>
 
       <h2>📚 Certificaciones Profesionales</h2>
 
       <div class="card fade-in">
         <strong>Inbound Marketing – HubSpot</strong>
-        <p>Aprendí a atraer, convertir y fidelizar clientes utilizando contenido de valor. Dominé la automatización y las fases del embudo de conversión.</p>
+        <p>Dominé estrategias de atracción, conversión y fidelización mediante contenidos de valor.</p>
       </div>
 
       <div class="card fade-in">
         <strong>SEO I y SEO II – HubSpot</strong>
-        <p>Me especialicé en posicionamiento orgánico: investigación de palabras clave, arquitectura web SEO-friendly y creación de contenido optimizado.</p>
+        <p>Competencias en keyword research, arquitectura web y redacción optimizada para Google.</p>
       </div>
 
       <div class="card fade-in">
         <strong>Marketing Digital – HubSpot</strong>
-        <p>Consolidé mis conocimientos sobre estrategia digital, performance marketing, email automation y analítica web.</p>
+        <p>Especialización en estrategia, automatización y analítica digital.</p>
+      </div>
+ 
+      <div class="card fade-in">
+        <strong>Community Manager – SEF</strong>
+        <p>Gestión de contenidos, reputación y planificación de redes sociales.</p>
       </div>
 
       <div class="card fade-in">
-        <strong>Protección de Datos Personales – SEF</strong>
-        <p>Adquirí nociones clave sobre la RGPD, privacidad digital y gestión ética de datos personales en campañas digitales.</p>
-      </div>
-
-      <div class="card fade-in">
-        <strong>HTML5, CSS3 y JavaScript – SEF</strong>
-        <p>Aprendí a crear estructuras web funcionales, con diseño responsivo y efectos interactivos. Esto me permite colaborar eficazmente en entornos web.</p>
-      </div>
-
-      <div class="card fade-in">
-        <strong>Community Manager y Reputación Online – SEF</strong>
-        <p>Me formé en gestión de comunidades digitales, crisis de reputación y planificación de contenido en redes sociales.</p>
-      </div>
-
-      <div class="card fade-in">
-        <strong>Desarrollo de un Plan de Marketing – SEF</strong>
-        <p>Diseñé planes integrales de marketing, analizando públicos objetivos, canales y presupuesto para campañas eficientes.</p>
-      </div>
-
-      <h2>🧠 Estrategia & Comunicación</h2>
-
-      <div class="card fade-in">
-        <strong>Copywriting – Putos Modernos</strong>
-        <p>Me entrené en redacción persuasiva, tono de marca y escritura creativa con foco en campañas que generan impacto y conexión emocional.</p>
-      </div>
-
-      <div class="card fade-in">
-        <strong>Estrategia de Comunicación para Redes Sociales – Domestika</strong>
-        <p>Aprendí a diseñar mensajes visuales y textuales alineados a objetivos estratégicos y al estilo de cada plataforma.</p>
-      </div>
-
-      <div class="card fade-in">
-        <strong>Estrategia para redes sociales: crea, gestiona y lanza campañas – Domestika</strong>
-        <p>Me capacité para planificar campañas completas en redes sociales, desde el concepto creativo hasta la medición de resultados.</p>
-      </div>
-
-      <h2>🎨 Branding & Experiencia</h2>
-
-      <div class="card fade-in">
-        <strong>Creation & Branding / Retail & Customer Experience – LVMH</strong>
-        <p>Profundicé en el diseño de marca, experiencia del cliente y storytelling emocional aplicado al lujo y al retail de alto nivel.</p>
+        <strong>HTML, CSS y JavaScript – SEF</strong>
+        <p>Fundamentos de desarrollo web y creación de interfaces funcionales.</p>
       </div>
     </section>
 
-    <!-- Sección Experiencia -->
+    <!-- 💼 EXPERIENCIA -->
     <section id="experiencia" class="section-content">
       <h2>Experiencia laboral</h2>
-      
+
       <div class="card fade-in">
         <strong>Web Content Manager – San Aburico SL (2025)</strong>
-        <p>Actualmente soy responsable de la gestión y actualización del catálogo digital en San Aburico, asegurando información clara y visualmente atractiva.</p>
-        <p>🛠️ Detecté y corregí fallos de diseño en la web, proponiendo mejoras visuales y estructurales que optimizan la estética y usabilidad.</p>
-        <p>🚀 Implementé mejoras en el rendimiento del sitio, logrando una carga más rápida y mejor adaptación a dispositivos móviles.</p>
-        <p>🧩 Mis funciones han fortalecido habilidades en gestión de contenido digital, resolución de errores web y optimización de experiencia de usuario.</p>
-        <p>📈 Contribuyo activamente al crecimiento digital de la marca, con enfoque en calidad, eficiencia y mejora continua.</p>
+        <p>Gestión del catálogo digital, corrección de diseño, mejora de UX y optimización del rendimiento web.</p>
       </div>
 
       <div class="card fade-in">
         <strong>Community Manager – Bootik Branding (2024)</strong>
-        <p>Actualmente desarrollo un rol clave como estratega y creadora de contenido en redes sociales:</p>
-        <p>🧠 Planifico y creo contenido visual y escrito (posts, reels, copys) adaptado a las últimas tendencias digitales.</p>
-        <p>🤖 Utilizo herramientas como CapCut e inteligencia artificial, acelerando y optimizando el proceso creativo.</p>
-        <p>✍️ Redacto textos persuasivos y alineados con el tono de marca, fomentando la interacción y la coherencia comunicativa.</p>
-        <p>📊 Analizo métricas clave (alcance, engagement, comunidad) y ajusto la estrategia de contenidos en función de los resultados.</p>
-        <p>🔎 He fortalecido habilidades en storytelling visual, gestión de redes y análisis de datos, aportando activamente al posicionamiento digital de la marca.</p>
+        <p>Planificación, creación de contenido, análisis de métricas y storytelling visual.</p>
       </div>
-      
+
       <div class="card fade-in">
-        <strong>Asistente de Marketing – Marketing Digital Murcia (MDM)</strong>
-        <p>Contribuí al crecimiento digital de la empresa a través de una combinación efectiva de contenido, estrategia y tecnología:</p>
-        <p>📈 +25% de tráfico orgánico en 3 meses, gracias a la planificación y ejecución de estrategias SEO para blogs y redes sociales.</p>
-        <p>📲 +20% de engagement y +15% en seguidores, dinamizando las redes sociales con contenido relevante y creativo.</p>
-        <p>📩 30% de tasa de apertura y 10% de conversión en campañas de email marketing segmentadas y optimizadas.</p>
-        <p>🧩 Diseño y ejecución de un Plan de Marketing Digital integral, mejorando la eficiencia operativa y las métricas clave.</p>
-        <p>🌐 Maquetación en WordPress usando Elementor, cuidando la experiencia del usuario y la presentación visual de cada artículo.</p>
+        <strong>Asistente de Marketing – MDM</strong>
+        <p>SEO, redes sociales, email marketing y maquetación web en WordPress.</p>
       </div>
 
       <h2 style="margin-top: 3rem;">Proyectos realizados</h2>
-      
+
       <div class="card fade-in">
         <strong>OJO POR OJO Óptica – E-commerce</strong>
-        <p>En este proyecto diseñé y desarrollé la página web oficial de OJO POR OJO, una óptica local con presencia física en un municipio de la Región de Murcia. El objetivo fue crear una tienda online funcional, atractiva y adaptada a las necesidades de un pequeño comercio, integrando elementos de marca, estructura intuitiva y enfoque comercial.</p>  
-        <p>Además de la parte técnica y visual, trabajé en la experiencia del usuario (UX), arquitectura de la información, selección de CMS, configuración del hosting y diseño responsive. El resultado fue un sitio web accesible, profesional y alineado con los valores de la marca.</p>
-        <img src="Captura de pantalla 2025-07-27 a las 23.15.08.png" alt="OjoPorOjo Óptica - Página web" class="project-img">
-        <a href="https://ojoporojooptica.com" target="_blank" class="project-button">
-          Click para ver el sitio <i class="material-icons">open_in_new</i>
-        </a>
+        <p>Diseño y desarrollo de tienda online completa para óptica local.</p>
+        <img src="Captura1.png" class="project-img">
+        <a href="https://ojoporojooptica.com" target="_blank" class="project-button">Ver sitio</a>
       </div>
-      
+
       <div class="card fade-in">
         <strong>GUCONST – Sitio Corporativo</strong>
-        <p>Actualmente me encuentro desarrollando el sitio web corporativo de GUCONST, una empresa dedicada a ofrecer servicios de construcción, reformas y mantenimiento. Este proyecto busca dotar al negocio de una presencia digital profesional, alineada con los valores de confianza, solidez y calidad que representa el sector.</p>
-        <p>Mi labor abarca desde la conceptualización de la arquitectura del sitio hasta el diseño visual y la redacción de contenidos orientados a conversión. Estoy trabajando en una estructura clara y jerarquizada que permita al usuario acceder fácilmente a los servicios ofrecidos, solicitar presupuestos y conocer la trayectoria de la empresa.</p>
-        <p>En el aspecto técnico, el sitio está siendo desarrollado con WordPress, utilizando plantillas personalizadas y prácticas de diseño responsive para garantizar una experiencia óptima desde cualquier dispositivo. También estoy aplicando estrategias básicas de SEO on-page, como la optimización de títulos, meta descripciones, interlinking y velocidad de carga, con el objetivo de facilitar el posicionamiento orgánico en buscadores locales.</p>
-        <img src="Captura de pantalla 2025-07-27 a las 23.13.45.png" alt="GUCONST - Sitio web corporativo" class="project-img">
-        <a href="https://guconst.es" target="_blank" class="project-button">
-          Click para ver el sitio <i class="material-icons">open_in_new</i>
-        </a>
+        <p>Desarrollo de página corporativa, arquitectura web y SEO local.</p>
+        <img src="Captura2.png" class="project-img">
+        <a href="https://guconst.es" target="_blank" class="project-button">Ver sitio</a>
       </div>
-      
+
       <div class="card fade-in">
-        <strong>MI ARTESANA</strong>
-        <p>Mi Artesana Shop fue un proyecto desarrollado desde cero, en el que me encargué del diseño, la estructura y el desarrollo completo de la tienda online. Optimizé el sitio para mejorar su visibilidad en Alicante mediante SEO local y una experiencia de usuario clara y orientada a la conversión.</p>
-        <img src="Captura de pantalla 2025-11-25 a las 16.12.48" alt="Mi Artesana Shop" class="project-img">
-        <a href="https://miartesanashop.com" target="_blank" class="project-button">
-          Click para ver el sitio <i class="material-icons">open_in_new</i>
-        </a>
+        <strong>MI ARTESANA SHOP</strong>
+        <p>Proyecto creado desde cero: diseño, estructura, branding, UX y SEO local para Alicante.</p>
+        <img src="Captura3.png" class="project-img">
+        <a href="https://miartesanashop.com" target="_blank" class="project-button">Ver sitio</a>
       </div>
+
     </section>
 
-    <!-- Sección Contacto -->
+    <!-- 📞 CONTACTO -->
     <section id="contacto" class="section-content">
       <h2>Contacto</h2>
-      <p style="margin-bottom: 1.5rem;">Estoy disponible para nuevos proyectos: desde estrategia digital hasta creación de contenido creativo y websites con personalidad.</p>
-      
+      <p>Disponible para nuevos proyectos y colaboraciones.</p>
+
       <div class="contact-grid">
+
         <div class="contact-card fade-in">
-          <div class="contact-icon">
-            <i class="material-icons">email</i>
-          </div>
-          <div class="contact-info">
+          <div class="contact-icon"><i class="material-icons">email</i></div>
+          <div>
             <strong>Email</strong>
             <a href="mailto:aliciiage@gmail.com">aliciiage@gmail.com</a>
           </div>
         </div>
-        
+
         <div class="contact-card fade-in">
-          <div class="contact-icon">
-            <i class="material-icons">phone</i>
-          </div>
-          <div class="contact-info">
+          <div class="contact-icon"><i class="material-icons">phone</i></div>
+          <div>
             <strong>Teléfono</strong>
             <a href="tel:+34630200095">+34 630 20 00 95</a>
           </div>
         </div>
-        
+
         <div class="contact-card fade-in">
-          <div class="contact-icon">
-            <i class="material-icons">location_on</i>
-          </div>
-          <div class="contact-info">
+          <div class="contact-icon"><i class="material-icons">location_on</i></div>
+          <div>
             <strong>Ubicación</strong>
             <span>Murcia, España</span>
           </div>
         </div>
-        
+
         <div class="contact-card fade-in">
-          <div class="contact-icon">
-            <i class="material-icons">link</i>
-          </div>
-          <div class="contact-info">
+          <div class="contact-icon"><i class="material-icons">link</i></div>
+          <div>
             <strong>LinkedIn</strong>
-            <a href="https://www.linkedin.com/in/alicia-guardiola-/" target="_blank">linkedin.com/in/alicia-guardiola</a>
+            <a href="https://www.linkedin.com/in/alicia-guardiola-/" target="_blank">Perfil</a>
           </div>
         </div>
+
       </div>
     </section>
+
   </main>
 
   <footer>
@@ -757,64 +479,40 @@
   </footer>
 
   <script>
-    // Menú hamburguesa para móviles
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', () => {
+
       const menuToggle = document.querySelector('.menu-toggle');
       const navLinks = document.querySelector('.nav-links');
-      
-      menuToggle.addEventListener('click', function() {
+
+      menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('show');
-        this.setAttribute('aria-expanded', navLinks.classList.contains('show'));
       });
-      
-      // Cerrar menú al hacer clic en un enlace (móviles)
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function() {
-          if (window.innerWidth <= 768) {
-            navLinks.classList.remove('show');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-      });
-      
-      // Navegación entre secciones
-      const navLinksAll = document.querySelectorAll('.nav-link');
+
+      const links = document.querySelectorAll('.nav-link');
       const sections = document.querySelectorAll('.section-content');
-      
-      navLinksAll.forEach(link => {
-        link.addEventListener('click', function(e) {
+
+      links.forEach(link => {
+        link.addEventListener('click', e => {
           e.preventDefault();
-          
-          // Remover clase active de todos los enlaces y secciones
-          navLinksAll.forEach(navLink => navLink.classList.remove('active'));
-          sections.forEach(section => section.classList.remove('active'));
-          
-          // Agregar clase active al enlace clickeado
-          this.classList.add('active');
-          
-          // Mostrar la sección correspondiente
-          const sectionId = this.getAttribute('data-section');
-          document.getElementById(sectionId).classList.add('active');
-          
-          // Scroll suave a la sección
-          document.getElementById(sectionId).scrollIntoView({
-            behavior: 'smooth'
-          });
+
+          links.forEach(l => l.classList.remove('active'));
+          sections.forEach(s => s.classList.remove('active'));
+
+          link.classList.add('active');
+          document.getElementById(link.dataset.section).classList.add('active');
         });
       });
-      
-      // Animaciones al hacer scroll
-      const observer = new IntersectionObserver((entries) => {
+
+      const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('show');
         });
-      }, { threshold: 0.1 });
-      
+      }, { threshold: 0.2 });
+
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
     });
   </script>
+
 </body>
 </html>
-
